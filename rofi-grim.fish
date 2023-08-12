@@ -3,7 +3,7 @@
 set tmp_file (mktemp /tmp/screenshot_XXXXXX.jpg)
 grim -t jpeg -q 100 $tmp_file
 
-set file_name (echo -n "" | rofi -dmenu -p "Enter file name: ")
+set file_name (echo -n "" | rofi -dmenu -p "Enter file name")
 
 if test -z $file_name
     notify-send "No file name entered. Aborting."
