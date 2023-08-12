@@ -5,7 +5,7 @@ tmp_file=$(mktemp /tmp/screenshot_XXXXXX.png)
 grim -t jpeg -q 100 $tmp_file
 
 # Use Rofi prompt to ask for a file name
-file_name=$(echo -n "" | rofi -dmenu -p "Enter file name: ")
+file_name=$(echo -n "" | rofi -dmenu -p "Enter file name")
 
 # Check if a file name was entered
 if [[ -z "$file_name" ]]; then
