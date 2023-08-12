@@ -21,7 +21,7 @@ if test -f $HOME/pictures/$file_name.jpg
         rm $tmp_file
         notify-send "Screenshot discarded. Existing picture kept."
     case "*"
-        notify-send "Invalid choice of no action taken. Aborting."
+        notify-send "Invalid choice or no action taken. Aborting."
         rm $tmp_file
         exit 1
     end
