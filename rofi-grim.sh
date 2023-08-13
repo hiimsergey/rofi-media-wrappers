@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Take a screenshot using grim command and save it with a temporary file name
 tmp_file=$(mktemp /tmp/screenshot_XXXXXX.png)
