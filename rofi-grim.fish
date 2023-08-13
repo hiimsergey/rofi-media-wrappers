@@ -12,7 +12,7 @@ while true
     end
     
     if test -f $HOME/pictures/$file_name.jpg
-        set choice (echo -e "rename\nreplace\nkeep & ignore" | rofi -dmenu -p "File with same name already exists!")
+        set choice (echo -e "rename\nreplace\nkeep & ignore" | rofi -dmenu -p "File with same name exists!")
     
         switch $choice
         case "rename"
