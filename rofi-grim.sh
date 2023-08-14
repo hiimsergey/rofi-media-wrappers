@@ -20,6 +20,7 @@ while true; do
         case "$choice" in
             "rename")
                 continue
+                ;;
             "replace")
                 mv "$tmp_file" "$HOME/pictures/$file_name.jpg"
                 notify-send "Screenshot replaced the existing picture."
