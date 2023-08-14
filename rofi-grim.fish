@@ -33,5 +33,6 @@ while true
     else
         mv "$tmp_file" "$HOME/pictures/$file_name.jpg"
         notify-send "Screenshot saved as $file_name.jpg"
+        break
     end
 end
