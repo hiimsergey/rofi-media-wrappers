@@ -1,6 +1,6 @@
 #!/bin/fish
 
-set tmp_file (mktemp /tmp/screenshot_XXXXXX.jpg)
+set tmp_file (mktemp /tmp/grim_XXXXXX.jpg)
 grim -t jpeg -q 100 $tmp_file
 
 while true
