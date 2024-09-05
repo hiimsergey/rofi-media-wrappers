@@ -1,11 +1,11 @@
 #!/bin/sh
-# Wraps grim (Wayland screenshot utility) around a usable rofi prompt
+# Wraps grim (Wayland screenshot utility) and slurp (geometry tool) around a usable rofi prompt
 
 canberra-gtk-play -i screen-capture &
 
 # Take a screenshot using grim command and save it with a temporary file name
-tmp_file=$(mktemp /tmp/grim_XXXXXX.png)
-grim -t png -q 100 $tmp_file
+tmp_file=$(mktemp /tmp/grim_slurp_XXXXXX.png)
+grim -t png -q 100 -g $(slurp) $tmp_file
 
 while true; do
     # Use Rofi prompt to ask for a file name
