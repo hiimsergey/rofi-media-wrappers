@@ -1,12 +1,15 @@
 #!/bin/sh
+# Wraps grim (Wayland screenshot utility) around a usable rofi prompt
+
+canberra-gtk-play -i screen-capture &
 
 # Take a screenshot using grim command and save it with a temporary file name
-tmp_file=$(mktemp /tmp/screenshot_XXXXXX.png)
+tmp_file=$(mktemp /tmp/grim_XXXXXX.png)
 grim -t jpeg -q 100 $tmp_file
 
 while true; do
     # Use Rofi prompt to ask for a file name
-    file_name=$(echo -n "" | rofi -dmenu -p "Enter file name")
+    file_name=$(echo -n "" | rofi -dmenu -p "Enter file name:")
     
     # Check if a file name was entered
     if [[ -z "$file_name" ]]; then

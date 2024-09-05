@@ -1,4 +1,5 @@
 #!/bin/sh
+# Wraps wf-recorder (Wayland screen recorder) around a usable Rofi prompt
 
 while true; do
     file_name=$(echo -n "" | rofi -dmenu -p "Enter file name")
@@ -9,7 +10,26 @@ while true; do
     fi
 
     if [[ -f $HOME/videos/$file_name.mp4 ]]; then
-        continue
+        choice=$(echo -e "rename\nreplace\nkeep & ignore" | rofi -dmenu -p "File with the same name exists!")
+
+        case "$choice" in
+            "rename")
+                continue
+                ;;
+            "replace")
+                rm "$HOME/videos/$file_name.mp4"
+                notify-send "Recording replaced the old one."
+                break
+                ;;
+            "keep & ignore")
+                notify-send "Screenshot discarded. Existing picture kept."
+                exit 0
+                ;;
+            *)
+                notify-send "Invalid choice or no action taken. Aborting."
+                exit 1
+                ;;
+        esac
     else
         break
     fi
