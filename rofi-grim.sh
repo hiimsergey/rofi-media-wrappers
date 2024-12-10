@@ -5,7 +5,7 @@ canberra-gtk-play -i screen-capture &
 
 # Take a screenshot using grim command and save it with a temporary file name
 tmp_file=$(mktemp /tmp/grim_XXXXXX.png)
-grim -t jpeg -q 100 $tmp_file
+grim -t png -g $tmp_file
 
 while true; do
     # Use Rofi prompt to ask for a file name
@@ -46,3 +46,4 @@ while true; do
         break
     fi
 done
+

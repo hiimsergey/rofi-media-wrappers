@@ -2,7 +2,7 @@
 # Use wf-recorder (Wayland screen recorder) in a Rofi prompt
 
 while true; do
-    file_name=$(echo -n "" | rofi -dmenu -p "Enter file name")
+    file_name=$(echo -n "" | rofi -dmenu -p "Enter video name:")
 
     if [[ -z "$file_name" ]]; then
         notify-send "No file name entered. Aborting."
