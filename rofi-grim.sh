@@ -5,11 +5,11 @@ canberra-gtk-play -i screen-capture &
 
 # Take a screenshot using grim command and save it with a temporary file name
 tmp_file=$(mktemp /tmp/grim_XXXXXX.png)
-grim -t png -g $tmp_file
+grim -t png $tmp_file
 
 while true; do
     # Use Rofi prompt to ask for a file name
-    file_name=$(echo -n "" | rofi -dmenu -p "Enter file name:")
+    file_name=$(echo -n "" | rofi -dmenu -p "Enter file name:" -filter "$file_name")
     
     # Check if a file name was entered
     if [[ -z "$file_name" ]]; then
@@ -17,7 +17,7 @@ while true; do
         exit 1
     fi
     
-    if [[ -f $HOME/pictures/$file_name.jpg ]]; then
+    if [[ -f $HOME/pictures/$file_name.png ]]; then
         choice=$(echo -e "rename\nreplace\nkeep & ignore" | rofi -dmenu -p "File with the same name exists!")
     
         case "$choice" in
@@ -25,7 +25,7 @@ while true; do
                 continue
                 ;;
             "replace")
-                mv "$tmp_file" "$HOME/pictures/$file_name.jpg"
+                mv "$tmp_file" "$HOME/pictures/$file_name.png"
                 notify-send "Screenshot replaced the existing picture."
                 break
                 ;;
@@ -41,8 +41,8 @@ while true; do
                 ;;
         esac
     else
-        mv "$tmp_file" "$HOME/pictures/$file_name.jpg"
-        notify-send "Screenshot saved as $file_name.jpg"
+        mv "$tmp_file" "$HOME/pictures/$file_name.png"
+        notify-send "Screenshot saved as $file_name.png"
         break
     fi
 done
